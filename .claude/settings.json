@@ -1,0 +1,10 @@
+{
+  "allowedTools": [
+    "WebSearch",
+    "WebFetch",
+    "Read",
+    "Write",
+    "Bash",
+    "Glob"
+  ]
+}

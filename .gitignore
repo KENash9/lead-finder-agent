@@ -1,0 +1,4 @@
+config/config.json
+outputs/*
+!outputs/.gitignore
+.claude/settings.local.json
