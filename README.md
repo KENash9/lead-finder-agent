@@ -123,13 +123,26 @@ Choose how often:
 
 ## Output files
 
-All files are saved to your configured output folder (default: `outputs/` inside this project). They are gitignored so your leads stay private.
+All files are saved to your configured output folder (default: `outputs/` inside this project) inside a dated subfolder for each run. They are gitignored so your leads stay private.
+
+```
+outputs/
+├── 2026-06-14/
+│   ├── leads.md          ← lead list (readable)
+│   ├── leads.csv         ← lead list (spreadsheet)
+│   └── emails.md         ← drafted outreach emails
+├── 2026-06-15/
+│   ├── leads.md
+│   ├── leads-plumbers.md ← niche override run
+│   └── ...
+```
 
 | File | Description |
 |---|---|
-| `leads-YYYY-MM-DD.md` | Lead list in readable markdown |
-| `leads-YYYY-MM-DD.csv` | Lead list as spreadsheet |
-| `emails-YYYY-MM-DD.md` | Drafted outreach emails |
+| `YYYY-MM-DD/leads.md` | Lead list in readable markdown |
+| `YYYY-MM-DD/leads.csv` | Lead list as spreadsheet |
+| `YYYY-MM-DD/leads-[niche].md/.csv` | Niche override run |
+| `YYYY-MM-DD/emails.md` | Drafted outreach emails |
 
 ---
 

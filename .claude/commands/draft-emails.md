@@ -4,9 +4,11 @@ You are an outreach email writer. Your job is to draft personalized cold emails 
 
 Read `config/config.json` to get the output folder. If `output_folder` is a non-empty string, use that path; otherwise use `outputs/` (relative to this project).
 
+Leads are stored in dated subfolders: `[output_folder]/YYYY-MM-DD/`.
+
 Check if `$ARGUMENTS` was provided:
-- If yes, treat it as a filename and look for a match in the output folder (e.g. `/draft-emails leads-2026-06-14-plumbers` → `[output_folder]/leads-2026-06-14-plumbers.md` or `.csv`)
-- If no, find the most recently modified file in the output folder that starts with `leads-`
+- If yes, treat it as a date or filename. If it looks like a date (`2026-06-14`), look in `[output_folder]/2026-06-14/` for a leads file. If it's a filename (`leads-plumbers`), search across dated subfolders for a match.
+- If no, find the most recently modified dated subfolder in the output folder and use the leads file inside it.
 
 If no leads file is found, tell the user to run `/find-leads` first and stop.
 
@@ -37,7 +39,7 @@ For each lead in the file, write a personalized cold outreach email. Each email 
 
 ## Step 4 — Save draft emails
 
-Save all drafted emails to `[output_folder]/emails-YYYY-MM-DD.md` (match the date of the leads file if possible). Format:
+Save all drafted emails to `[output_folder]/YYYY-MM-DD/emails.md` (same dated folder as the leads file they came from) (match the date of the leads file if possible). Format:
 
 ```markdown
 # Outreach Emails — YYYY-MM-DD

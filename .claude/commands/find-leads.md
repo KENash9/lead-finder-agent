@@ -52,11 +52,15 @@ If a result looks promising but lacks contact info, do a follow-up search like `
 
 ## Step 4 — Save results
 
-Determine the output folder: if `output_folder` in config is a non-empty string, use that path. Otherwise use `outputs/` (relative to this project). Determine the base filename using today's date. If a niche override was provided, slugify it (lowercase, spaces → hyphens): `leads-YYYY-MM-DD-[niche-slug]`, otherwise `leads-YYYY-MM-DD`.
+Determine the root output folder: if `output_folder` in config is a non-empty string, use that path. Otherwise use `outputs/` (relative to this project).
+
+Create a dated subfolder inside it: `[output_folder]/YYYY-MM-DD/` (today's date). This keeps every run's files together and builds a history over time. If the folder doesn't exist, create it.
+
+Determine the base filename. If a niche override was provided, slugify it (lowercase, spaces → hyphens): `leads-[niche-slug]`, otherwise `leads`.
 
 Check `output_format` in config (default to `both` if missing):
 
-**If markdown or both** — save `outputs/[basename].md`:
+**If markdown or both** — save `[output_folder]/YYYY-MM-DD/[basename].md`:
 
 ```markdown
 # Leads — YYYY-MM-DD
@@ -76,7 +80,7 @@ Check `output_format` in config (default to `both` if missing):
 ...
 ```
 
-**If CSV or both** — save `outputs/[basename].csv` with this header row and one row per lead:
+**If CSV or both** — save `[output_folder]/YYYY-MM-DD/[basename].csv` with this header row and one row per lead:
 
 ```
 date,company_name,website,location,description,contact_name,contact_role,contact_email,contact_linkedin,source
